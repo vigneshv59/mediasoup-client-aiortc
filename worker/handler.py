@@ -40,11 +40,11 @@ class Handler:
         self._getRemoteTrack = getRemoteTrack
 
         @self._pc.on("track")  # type: ignore
-        def on_track(track) -> None:
+        async def on_track(track) -> None:
             Logger.debug(f"handler: ontrack [kind:{track.kind}, id:{track.id}]")
 
             # store it
-            self._addRemoteTrack(track)
+            await self._addRemoteTrack(track)
 
         @self._pc.on("signalingstatechange")  # type: ignore
         async def on_signalingstatechange() -> None:

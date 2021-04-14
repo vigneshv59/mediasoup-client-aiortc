@@ -53,8 +53,12 @@ if __name__ == "__main__":
 
         return track
 
-    def addRemoteTrack(track: MediaStreamTrack) -> None:
+    async def addRemoteTrack(track: MediaStreamTrack) -> None:
         recvTracks[track.id] = track
+        blackhole = MediaBlackhole()
+        blackhole.addTrack(track)
+        await blackhole.start()
+
 
     def getRemoteTrack(trackId: str, kind: str) -> MediaStreamTrack:
         track = recvTracks.get(trackId)
