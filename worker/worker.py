@@ -4,7 +4,7 @@ import asyncio
 from os import getpid
 from typing import Any, Dict
 from aiortc import RTCConfiguration, RTCIceServer, RTCPeerConnection
-from aiortc.contrib.media import MediaPlayer, MediaStreamTrack
+from aiortc.contrib.media import MediaPlayer, MediaStreamTrack, MediaBlackhole
 from channel import Request, Notification, Channel
 from handler import Handler
 from logger import Logger
